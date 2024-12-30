@@ -11,6 +11,8 @@ urlpatterns = [
     path('products/list/', views.get_products, name='get_products'),
     path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('products/<int:id>/', views.get_product_details, name='get_product_details'),
+
 ]
 
 # Serve media files during development (only needed once)

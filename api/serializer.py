@@ -15,15 +15,21 @@ class UserSerializer(serializers.ModelSerializer):
             username=validated_data['username'],
             email=validated_data['email'],
             password=validated_data['password'],
-            phone=phone
+            phone=phone  # Custom field handled here
         )
         return user
 
-
 class ProductSerializer(serializers.ModelSerializer):
-    image = serializers.ImageField(required=False)
+    user = UserSerializer()  # Use nested serializer for user details
 
     class Meta:
         model = Product
         fields = '__all__'
+
+# class ProductSerializer(serializers.ModelSerializer):
+#     image = serializers.ImageField(required=False)
+
+#     class Meta:
+#         model = Product
+#         fields = '__all__'
 
